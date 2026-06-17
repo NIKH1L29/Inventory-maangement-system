@@ -1,0 +1,16 @@
+# Python bytecode and virtual env
+__pycache__/
+*.py[cod]
+venv/
+.venv/
+
+# Local SQLite file - cloud hosts use ephemeral storage anyway
+*.db
+
+# IDE
+.vscode/
+.idea/
+
+# OS junk
+.DS_Store
+Thumbs.db

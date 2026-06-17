@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Inventory Management</title>
+  <link rel="stylesheet" href="css/style.css" />
+</head>
+<body>
+  <div class="container">
+    <header>
+      <h1>Inventory Management</h1>
+      <p class="subtitle">Track stock across warehouses</p>
+    </header>
+
+    <!-- API URL - change this when you deploy the backend -->
+    <section class="card config-bar">
+      <label for="apiUrl">Backend API URL</label>
+      <div class="row">
+        <input type="text" id="apiUrl" value="http://localhost:8000" placeholder="https://your-api.onrender.com" />
+        <button type="button" id="saveApiBtn" class="btn secondary">Connect</button>
+      </div>
+      <span id="connectionStatus" class="status-dot offline">Not connected</span>
+    </section>
+
+    <!-- Natural language command - matches the interview example -->
+    <section class="card">
+      <h2>Quick Command</h2>
+      <p class="hint">Example: Add 50 units of "Dell Laptop" to warehouse A.</p>
+      <div class="row">
+        <input type="text" id="commandInput" placeholder='Add 50 units of "Dell Laptop" to warehouse A.' />
+        <button type="button" id="runCommandBtn" class="btn primary">Run</button>
+      </div>
+      <pre id="commandResult" class="result-box hidden"></pre>
+    </section>
+
+    <!-- Manual form for people who prefer clicking -->
+    <section class="card">
+      <h2>Add Stock Manually</h2>
+      <form id="addForm" class="form-grid">
+        <div class="field">
+          <label for="itemName">Item name</label>
+          <input type="text" id="itemName" required placeholder="Dell Laptop" />
+        </div>
+        <div class="field">
+          <label for="quantity">Quantity</label>
+          <input type="number" id="quantity" min="1" required placeholder="50" />
+        </div>
+        <div class="field">
+          <label for="location">Warehouse</label>
+          <input type="text" id="location" required placeholder="Warehouse A" />
+        </div>
+        <button type="submit" class="btn primary full-width">Add to inventory</button>
+      </form>
+    </section>
+
+    <!-- Summary stats -->
+    <section class="stats-row">
+      <div class="stat-card">
+        <span class="stat-label">Unique items</span>
+        <span class="stat-value" id="statItems">0</span>
+      </div>
+      <div class="stat-card">
+        <span class="stat-label">Total units</span>
+        <span class="stat-value" id="statQuantity">0</span>
+      </div>
+      <div class="stat-card">
+        <span class="stat-label">Warehouses</span>
+        <span class="stat-value" id="statWarehouses">0</span>
+      </div>
+    </section>
+
+    <!-- Inventory table -->
+    <section class="card">
+      <div class="table-header">
+        <h2>Current Inventory</h2>
+        <button type="button" id="refreshBtn" class="btn secondary">Refresh</button>
+      </div>
+      <div class="filter-row">
+        <input type="text" id="filterLocation" placeholder="Filter by warehouse (optional)" />
+        <button type="button" id="filterBtn" class="btn secondary">Filter</button>
+        <button type="button" id="clearFilterBtn" class="btn ghost">Clear</button>
+      </div>
+      <div class="table-wrap">
+        <table>
+          <thead>
+            <tr>
+              <th>Item</th>
+              <th>Quantity</th>
+              <th>Warehouse</th>
+              <th>Last updated</th>
+              <th></th>
+            </tr>
+          </thead>
+          <tbody id="inventoryBody">
+            <tr><td colspan="5" class="empty">Loading...</td></tr>
+          </tbody>
+        </table>
+      </div>
+    </section>
+
+    <footer>
+      <p>Inventory Management System &mdash; Ethara AI Assessment</p>
+    </footer>
+  </div>
+
+  <div id="toast" class="toast hidden"></div>
+  <script src="js/config.js"></script>
+  <script src="js/app.js"></script>
+</body>
+</html>
