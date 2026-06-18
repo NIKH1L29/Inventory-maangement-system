@@ -2,11 +2,6 @@
 
 Full-stack inventory tracker with a **FastAPI** backend and a **plain HTML/CSS/JS** frontend.
 
-Built for the Ethara AI assessment — supports natural-language commands like:
-
-```
-Add 50 units of "Dell Laptop" to warehouse A.
-```
 
 **API response:**
 
@@ -107,20 +102,6 @@ Then open **http://localhost:5500**. The default API URL is `http://localhost:80
 - **Frontend:** HTML5, CSS3, Vanilla JavaScript  
 - **Deploy:** Docker, Render, Netlify  
 
-##  Run Locally
-
-### Backend
-```bash
-cd backend
-python -m venv venv
-source venv/bin/activate   # (Linux/Mac)
-venv\Scripts\activate      # (Windows)
-pip install -r requirements.txt
-uvicorn app.main:app --reload --port 8000
-
-**### Frontend**
-cd frontend
-python -m http.server 5500
 
 **## Deployment Links**
 GitHub Repo: https://github.com/NIKH1L29/Inventory-management-system
